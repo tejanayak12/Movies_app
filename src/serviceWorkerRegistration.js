@@ -16,7 +16,7 @@ export function register(config) {
         }
 
         window.addEventListener("load", () => {
-            const swUrl = `${process.env, PUBLIC_URL}/service-worker.js`
+            const swUrl = `${process.env, publicUrl}/service-worker.js`
 
             if (isLocalhost) {
                 checkValidServiceWorker(swUrl, config);
@@ -61,8 +61,8 @@ function registerValidSW(swUrl, config) {
                                 console.log("Content is cached for offline use.")
                             );
 
-                            if (congif && config.onSuccess) {
-                                congif.onSuccess(registration);
+                            if (config && config.onSuccess) {
+                                config.onSuccess(registration);
                             }
                         }
                     }
@@ -100,14 +100,14 @@ function checkValidServiceWorker(swUrl, config) {
         })
 };
 
-export function unregister(){
-    if("serviceWorker" in navigator){
+export function unregister() {
+    if ("serviceWorker" in navigator) {
         navigator.serviceWorker.ready
-        .then((registration) => {
-            registration.unregister();
-        })
-        .catch((error) => {
-            console.log(error.message)
-        })
+            .then((registration) => {
+                registration.unregister();
+            })
+            .catch((error) => {
+                console.log(error.message)
+            })
     }
 }
